@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:8000/api';
+const BASE = 'https://mini-ecommerce-l78b.vercel.app/api';
 
 export interface Product {
   id: number;
