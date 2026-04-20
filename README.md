@@ -1,41 +1,101 @@
-# Ecommerce MVP - Next.js + Nest.js
+# 🛍️ Mini E-Commerce
 
-Mini ecommerce dengan fitur:
-- List produk dengan filter kategori & search
+Aplikasi e-commerce fullstack dengan fitur pembeli dan penjual, dibangun menggunakan Next.js dan NestJS.
+
+🔗 **Demo**: [mini-ecommerce-mu-ten.vercel.app](https://mini-ecommerce-mu-ten.vercel.app)  
+🔗 **Backend**: [mini-ecommerce-l78b.vercel.app](https://mini-ecommerce-l78b.vercel.app)
+
+---
+
+## ✨ Fitur
+
+### 🛍️ Pembeli
+- Lihat daftar produk dengan filter kategori & pencarian
 - Detail produk
 - Keranjang belanja
-- Checkout & success page
+- Checkout & halaman sukses
 
-## Tech Stack
-- **Frontend**: Next.js 14 (App Router) + TypeScript + Tailwind CSS
-- **Backend**: Nest.js + TypeScript
+### 🏪 Penjual
+- Daftar & login sebagai penjual
+- Dashboard untuk tambah, edit, dan hapus produk
+- Produk yang ditambah langsung muncul di halaman utama
 
-## Cara Menjalankan
+### 🔐 Autentikasi
+- Register & login sebagai pembeli atau penjual
+- Data user disimpan di localStorage
 
-### Backend (Nest.js)
+---
+
+## 🧱 Tech Stack
+
+| Layer | Teknologi |
+|-------|-----------|
+| Frontend | Next.js 15, TypeScript, Tailwind CSS |
+| Backend | NestJS, TypeScript |
+| Auth | localStorage |
+| Deployment | Vercel |
+
+---
+
+## 📁 Struktur Project
+
+```
+ecommerce-mvp/
+├── frontend/        # Next.js App
+│   ├── app/
+│   │   ├── login/         # Halaman login & register
+│   │   ├── seller/
+│   │   │   └── dashboard/ # Dashboard penjual
+│   │   ├── cart/          # Keranjang belanja
+│   │   ├── checkout/      # Halaman checkout
+│   │   └── products/      # Detail produk
+│   ├── components/        # Navbar, ProductCard
+│   ├── context/           # AuthContext, CartContext
+│   └── lib/               # API helper
+└── backend/         # NestJS App
+    └── src/
+        ├── products/      # CRUD produk
+        └── orders/        # Buat pesanan
+```
+
+---
+
+## 🚀 Cara Menjalankan Lokal
+
+### Backend
 ```bash
 cd backend
+npm install
 npm run start:dev
 ```
-Backend berjalan di: http://localhost:5000
+Berjalan di: `http://localhost:8000`
 
-### Frontend (Next.js)
+### Frontend
 ```bash
 cd frontend
+npm install
 npm run dev
 ```
-Frontend berjalan di: http://localhost:3000
+Berjalan di: `http://localhost:3000`
 
-## API Endpoints
-- `GET /api/products` - List produk (query: category, search)
-- `GET /api/products/:id` - Detail produk
-- `POST /api/orders` - Buat pesanan
-- `GET /api/orders` - List pesanan
+---
 
-## Fitur
-✅ List produk dengan filter & search
-✅ Detail produk
-✅ Keranjang belanja (client-side state)
-✅ Checkout form
-✅ Success page
-✅ Stock management
+## 🔌 API Endpoints
+
+| Method | Endpoint | Deskripsi |
+|--------|----------|-----------|
+| GET | `/api/products` | List produk (query: `category`, `search`) |
+| GET | `/api/products/:id` | Detail produk |
+| POST | `/api/orders` | Buat pesanan |
+
+---
+
+## ✅ Status Fitur
+
+- ✅ List produk dengan filter & search
+- ✅ Detail produk
+- ✅ Keranjang belanja
+- ✅ Checkout & success page
+- ✅ Register & login (pembeli / penjual)
+- ✅ Dashboard penjual (tambah, edit, hapus produk)
+- ✅ Deploy ke Vercel
