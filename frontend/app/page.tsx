@@ -30,7 +30,15 @@ function HomeContent() {
     const params: Record<string, string> = {};
     if (category !== 'Semua') params.category = category;
     if (search) params.search = search;
-    getProducts(params).then(data => { setProducts(data); setLoading(false); });
+    getProducts(params).then(data => {
+      const sellerStored = localStorage.getItem('all_seller_products');
+      const sellerProducts = sellerStored ? JSON.parse(sellerStored) : [];
+      let merged = [...data, ...sellerProducts];
+      if (category !== 'Semua') merged = merged.filter(p => p.category === category);
+      if (search) merged = merged.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+      setProducts(merged);
+      setLoading(false);
+    });
   }, [category, search]);
 
   return (
